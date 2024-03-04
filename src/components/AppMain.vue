@@ -1,11 +1,20 @@
 <script>
+import { store } from '../store';
 import AppCards from './AppCards.vue';
+import AppLoading from './AppLoading.vue';
 
 export default {
     name: 'AppMain',
 
     components: {
         AppCards,
+        AppLoading
+    },
+
+    data() {
+        return {
+            store,
+        }
     }
 }
 </script>
@@ -15,7 +24,9 @@ export default {
     <main>
         <div class="container">
 
-            <AppCards></AppCards>
+            <AppCards v-if="store.cards.length >= 20"></AppCards>
+
+            <AppLoading v-else></AppLoading>
             
         </div>
     </main>

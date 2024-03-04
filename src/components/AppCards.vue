@@ -20,28 +20,32 @@ export default {
 
 <template>
 
-    <div class="section">
-        
-        <div class="cards-title">
-            <h2>
-                Found {{ store.cards.length }} Cards
-            </h2>
-        </div>
-        <div class="cards-list">
+    <section>
 
-            <CardItem 
-                v-for="currentCard in store.cards"
-                :card="currentCard"
-            ></CardItem>
-            
+        <div class="content">
+
+            <div class="cards-title">
+                <h2>
+                    Found {{ store.cards.length }} Cards
+                </h2>
+            </div>
+            <div class="cards-list">
+    
+                <CardItem 
+                    v-for="currentCard in store.cards"
+                    :card="currentCard"
+                ></CardItem>
+                
+            </div>
+
         </div>
 
-    </div>
+    </section>
 </template>
 
 <style lang="scss">
 
-.section {
+section {
 
     .cards-title {
         background-color: black;
