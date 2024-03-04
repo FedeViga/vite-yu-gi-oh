@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import AppNav from './components/AppNav.vue';
+import AppMain from './components/AppMain.vue';
 
 export default {
 
@@ -20,6 +21,7 @@ export default {
 
   components: {
     AppNav,
+    AppMain,
   },
 }
 </script>
@@ -28,8 +30,12 @@ export default {
 
   <AppNav></AppNav>
 
+  <AppMain></AppMain>
+
 </template>
 
 <style lang="scss">
+
+@use './styles/general' as *;
 
 </style>
