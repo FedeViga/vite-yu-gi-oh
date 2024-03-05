@@ -49,6 +49,8 @@ export default {
 
 <style lang="scss">
 
+@use '../styles/variables' as *; 
+
 section {
 
     .cards-title {
@@ -58,6 +60,9 @@ section {
         color: white;
         padding: 30px 24px;
         font-size: 14px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: $box-shadow-primary;
     }
 
     .cards-list {

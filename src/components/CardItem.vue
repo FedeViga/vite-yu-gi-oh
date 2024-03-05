@@ -35,6 +35,10 @@ export default {
     width: calc(100% / 5 - 36px / 5 * 4);
     background-color: $primary;
     text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: $box-shadow-primary;
 
     img {
         display: block;
@@ -49,7 +53,7 @@ export default {
     }
 
     h3:last-child {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         font-weight: 400;
         font-size: 22px;
     }

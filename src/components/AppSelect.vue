@@ -22,6 +22,8 @@ export default {
 
         <option disabled value="">Choose Archetype</option>
 
+        <option value="-1">All</option>
+
         <option 
           v-for="(currentArchetype, index) in store.archetypes" 
           :value="index"
@@ -53,6 +55,7 @@ export default {
       background-color: white;
       color: black;
       border-radius: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
     }
   }
 }

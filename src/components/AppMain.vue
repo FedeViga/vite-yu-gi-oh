@@ -50,6 +50,8 @@ main {
         color: black;
         padding: 70px;
         margin: 0 auto;
+        border-radius: 20px;
+        box-shadow: $box-shadow-primary;
     }
 }
 </style>

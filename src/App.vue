@@ -42,21 +42,36 @@ export default {
       // caricamento
       this.store.loaded = false;
 
-      // variabile dove salvo l'archetype selezionato
-      let selectedArchetype = (this.store.archetypes[this.store.selectedArchetypeIndex].archetype_name);
-      console.log(selectedArchetype);
+      if(this.store.selectedArchetypeIndex != - 1) {
 
-      // chiamata axios
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=' + selectedArchetype).then(result => {
-      console.log(result.data.data)
-      this.store.cards = result.data.data;
+          // variabile dove salvo l'archetype selezionato
+          let selectedArchetype = (this.store.archetypes[this.store.selectedArchetypeIndex].archetype_name);
+          console.log(selectedArchetype);
+    
+          // chiamata axios
+          axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=' + selectedArchetype).then(result => {
+          console.log(result.data.data)
+          this.store.cards = result.data.data;
+    
+    
+          // mi salvo il numero di carte trovate dalla chiamata
+          this.store.cardsFoundNumber = result.data.meta.total_rows;
+    
+          // caricamento
+          this.store.loaded = true;
+        })
+      } else {
+        // chiamata axios per ottenere le prime 20 cards dall'api
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then(result => {
+        this.store.cards = result.data.data;
+        
+        // mi salvo il numero di carte trovate dalla chiamata
+        this.store.cardsFoundNumber = result.data.meta.total_rows;
 
-      // mi salvo il numero di carte trovate dalla chiamata
-      this.store.cardsFoundNumber = result.data.meta.total_rows;
-
-      // caricamento
-      this.store.loaded = true;
-    })
+        // caricamento
+        this.store.loaded = true;
+      })
+      }
     }
   },
 
