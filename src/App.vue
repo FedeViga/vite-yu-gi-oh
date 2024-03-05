@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import AppNav from './components/AppNav.vue';
+import AppSelect from './components/AppSelect.vue';
 import AppMain from './components/AppMain.vue';
 
 import {store} from './store.js'
@@ -21,10 +22,16 @@ export default {
       this.store.cards = result.data.data;
       this.store.loaded = true;
     })
+
+    axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then(result => {
+      this.store.archetypes = result.data;
+      console.log(this.store.archetypes);
+    })
   },
 
   components: {
     AppNav,
+    AppSelect,
     AppMain,
   },
 }
@@ -33,6 +40,8 @@ export default {
 <template>
 
   <AppNav></AppNav>
+
+  <AppSelect></AppSelect>
 
   <AppMain></AppMain>
 

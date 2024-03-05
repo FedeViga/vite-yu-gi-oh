@@ -41,7 +41,7 @@ export default {
 main {
 
     background-color: $primary;
-    padding: 124px 10px;
+    padding: 0px 10px 20px 10px;
 
     .container {
         max-width: 1680px;
