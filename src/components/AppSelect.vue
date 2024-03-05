@@ -18,8 +18,17 @@ export default {
 
   <div class="select-wrapper">
     <div class="container">
-      <select name="card-select" id="card-select">
-        <option v-for="(currentArchetype, index) in store.archetypes" :value="index">{{ currentArchetype.archetype_name }}</option>
+      <select v-model="store.selectedArchetypeIndex" name="card-select" id="card-select" @change="$emit('search')">
+
+        <option disabled value="">Choose Archetype</option>
+
+        <option 
+          v-for="(currentArchetype, index) in store.archetypes" 
+          :value="index"
+        >
+          {{ currentArchetype.archetype_name }}
+        </option>
+
       </select>
     </div>
   </div>

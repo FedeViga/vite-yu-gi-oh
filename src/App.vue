@@ -17,16 +17,39 @@ export default {
 
   created() {
 
+    // chiamata axios per ottenere le prime 20 cards dall'api
     axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then(result => {
-      console.log(result.data.data)
       this.store.cards = result.data.data;
       this.store.loaded = true;
     })
 
+    // chiamata axios per ottenere tutti gli archetypes delle cards 
     axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php').then(result => {
       this.store.archetypes = result.data;
-      console.log(this.store.archetypes);
     })
+  },
+
+  methods: {
+
+    // metodo per filtrare le cards in base all'archetype selezionato
+    searchCards() {
+
+      // caricamento
+      this.store.loaded = false;
+
+      // variabile dove salvo l'archetype selezionato
+      let selectedArchetype = (this.store.archetypes[this.store.selectedArchetypeIndex].archetype_name);
+      console.log(selectedArchetype);
+
+      // chiamata axios
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=' + selectedArchetype).then(result => {
+      console.log(result.data.data)
+      this.store.cards = result.data.data;
+
+      // caricamento
+      this.store.loaded = true;
+    })
+    }
   },
 
   components: {
@@ -41,7 +64,7 @@ export default {
 
   <AppNav></AppNav>
 
-  <AppSelect></AppSelect>
+  <AppSelect @search="searchCards()"></AppSelect>
 
   <AppMain></AppMain>
 

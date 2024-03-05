@@ -4,4 +4,5 @@ export const store = reactive ({
     cards: [],
     archetypes: [],
     loaded: false,
+    selectedArchetypeIndex: '',
 })
