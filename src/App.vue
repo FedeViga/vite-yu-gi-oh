@@ -20,6 +20,11 @@ export default {
     // chiamata axios per ottenere le prime 20 cards dall'api
     axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then(result => {
       this.store.cards = result.data.data;
+      
+      // mi salvo il numero di carte trovate dalla chiamata
+      this.store.cardsFoundNumber = result.data.meta.total_rows;
+
+      // caricamento
       this.store.loaded = true;
     })
 
@@ -45,6 +50,9 @@ export default {
       axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&archetype=' + selectedArchetype).then(result => {
       console.log(result.data.data)
       this.store.cards = result.data.data;
+
+      // mi salvo il numero di carte trovate dalla chiamata
+      this.store.cardsFoundNumber = result.data.meta.total_rows;
 
       // caricamento
       this.store.loaded = true;

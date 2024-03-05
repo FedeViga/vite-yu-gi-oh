@@ -26,7 +26,11 @@ export default {
 
             <div class="cards-title">
                 <h2>
-                    Found {{ store.cards.length }} Cards
+                    Cards Found: {{ store.cardsFoundNumber }}
+                </h2>
+
+                <h2>
+                    Cards Shown: {{ store.cards.length }}
                 </h2>
             </div>
             <div class="cards-list">
@@ -48,6 +52,8 @@ export default {
 section {
 
     .cards-title {
+        display: flex;
+        justify-content: space-between;
         background-color: black;
         color: white;
         padding: 30px 24px;

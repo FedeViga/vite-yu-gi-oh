@@ -5,4 +5,5 @@ export const store = reactive ({
     archetypes: [],
     loaded: false,
     selectedArchetypeIndex: '',
+    cardsFoundNumber: '',
 })
