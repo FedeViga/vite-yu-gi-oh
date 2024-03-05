@@ -24,7 +24,7 @@ export default {
     <main>
         <div class="container">
 
-            <AppCards v-if="store.cards.length >= 20"></AppCards>
+            <AppCards v-if="store.loaded"></AppCards>
 
             <AppLoading v-else></AppLoading>
             
